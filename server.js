@@ -24,18 +24,6 @@ app.get('/api/greeting', (req, res) => {
   res.send(JSON.stringify({ greeting: `Hello ${name}!` }));
 });
 
-app.get('/chat/token', (req, res) => {
-  const identity = req.query.identity;
-  const token = chatToken(identity, config);
-  sendTokenResponse(token, res);
-});
-
-app.post('/chat/token', (req, res) => {
-  const identity = req.body.identity;
-  const token = chatToken(identity, config);
-  sendTokenResponse(token, res);
-});
-
 app.get('/video/token', (req, res) => {
   const identity = req.query.identity;
   const room = req.query.room;
@@ -47,18 +35,6 @@ app.post('/video/token', (req, res) => {
   const identity = req.body.identity;
   const room = req.body.room;
   const token = videoToken(identity, room, config);
-  sendTokenResponse(token, res);
-});
-
-app.get('/voice/token', (req, res) => {
-  const identity = req.body.identity;
-  const token = voiceToken(identity, config);
-  sendTokenResponse(token, res);
-});
-
-app.post('/voice/token', (req, res) => {
-  const identity = req.body.identity;
-  const token = voiceToken(identity, config);
   sendTokenResponse(token, res);
 });
 
