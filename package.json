@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/kleimaj/jakechat-backend/issues"
   },
-  "homepage": "https://github.com/kleimaj/jakechat-backend#readme"
+  "homepage": "https://github.com/kleimaj/jakechat-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0"
+  }
 }

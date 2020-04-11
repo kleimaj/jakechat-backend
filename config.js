@@ -1,3 +1,4 @@
+require('dotenv').config()
 module.exports = {
   twilio: {
     accountSid: process.env.TWILIO_ACCOUNT_SID,

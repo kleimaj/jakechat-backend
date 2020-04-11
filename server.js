@@ -1,13 +1,41 @@
 const config = require('./config');
 const express = require('express');
 const bodyParser = require('body-parser');
-const pino = require('express-pino-logger')();
-const { chatToken, videoToken, voiceToken } = require('./tokens');
+const cors = require('cors');
+// const pino = require('express-pino-logger')();
+const { videoToken } = require('./tokens');
+
+const corsOptions = {
+  origin: ['http://localhost:3000'],
+  methods: "GET,POST,PUT,DELETE",
+  credentials: true, //allows session cookies to be sent back and forth
+  optionsSuccessStatus: 200 //legacy browsers
+}
 
 const app = express();
+
+// middleware
+
+//CORS- Cross Origin Resource Sharing
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(pino);
+// app.use(pino);
+
+app.use((req, res, next) => {
+  const url = req.url;
+  const method = req.method;
+
+  // Destructuring
+  // const { url, method } = req;
+
+  const requestedAt = new Date().toLocaleTimeString();
+  const result = `${method} ${url} ${requestedAt}`;
+  console.log(result);
+
+  next();
+});
+
 
 const sendTokenResponse = (token, res) => {
   res.set('Content-Type', 'application/json');
