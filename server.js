@@ -7,7 +7,7 @@ const { videoToken } = require('./tokens');
 
 const corsOptions = {
   // origin: ['http://localhost:3000'],
-  origin: [process.env.CLIENT_URL],
+  origin: [process.env.CLIENT_URL, process.env.CLIENT_URL_HTTP],
   methods: "GET,POST,PUT,DELETE",
   credentials: true, //allows session cookies to be sent back and forth
   optionsSuccessStatus: 200 //legacy browsers
