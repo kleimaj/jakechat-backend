@@ -6,7 +6,8 @@ const cors = require('cors');
 const { videoToken } = require('./tokens');
 
 const corsOptions = {
-  origin: ['http://localhost:3000'],
+  // origin: ['http://localhost:3000'],
+  origin: [process.env.CLIENT_URL],
   methods: "GET,POST,PUT,DELETE",
   credentials: true, //allows session cookies to be sent back and forth
   optionsSuccessStatus: 200 //legacy browsers
@@ -53,6 +54,7 @@ app.get('/api/greeting', (req, res) => {
 });
 
 app.get('/video/token', (req, res) => {
+  // console.log(req.query)
   const identity = req.query.identity;
   const room = req.query.room;
   const token = videoToken(identity, room, config);
