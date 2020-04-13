@@ -54,7 +54,6 @@ app.get('/api/greeting', (req, res) => {
 });
 
 app.get('/video/token', (req, res) => {
-  // console.log(req.query)
   const identity = req.query.identity;
   const room = req.query.room;
   const token = videoToken(identity, room, config);
@@ -62,6 +61,7 @@ app.get('/video/token', (req, res) => {
 });
 
 app.post('/video/token', (req, res) => {
+  console.log(req);
   const identity = req.body.identity;
   const room = req.body.room;
   const token = videoToken(identity, room, config);
